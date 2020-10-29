@@ -1,6 +1,6 @@
 # Script that finds sources using Atropy Photutils
 # Most of this script has been grabbed from the documentation of
-# Photutils without much thinking. 
+# Photutils without much thinking.
 
 import numpy as np
 from photutils import DAOStarFinder
@@ -18,7 +18,7 @@ input_data = hdu_input[0].data
 hdu_input.close()
 
 bkg_sigma = mad_std(input_data)
-daofind = DAOStarFinder(fwhm=10., threshold=1e2*bkg_sigma)
+daofind = DAOStarFinder(fwhm=10., threshold=10*bkg_sigma)
 sources = daofind(input_data)
 
 for col in sources.colnames:
@@ -38,4 +38,5 @@ plt.imshow(input_data, cmap='gray_r', origin='lower',\
 norm=PowerNorm(vmin=input_data.min(), vmax=input_data.max(),gamma=0.333))
 plt.colorbar()
 apertures.plot(color='blue', lw=1.5, alpha=0.5)
+plt.savefig('source_recovery.png')
 plt.show()

@@ -8,6 +8,6 @@ filter = 'F200W'
 
 nc = webbpsf.NIRCam()
 nc.filter = filter
-psf = nc.calc_psf(outfile='{}_psf.fits'.format(filter),oversample=2,fov_arcsec=2.0)
+psf = nc.calc_psf(outfile='{}_psf.fits'.format(filter),oversample=2,fov_arcsec=5.0)
 webbpsf.display_psf(psf)
 plt.show()

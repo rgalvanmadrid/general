@@ -17,17 +17,33 @@ def binary(br=1., Dec_offset=0.1, RA_offset=0.1,imsize=[3.,3.],pixscale=0.015):
 
 def multiple(br=[1.], Dec_offset=[0], RA_offset=[0],imsize=[3.,3.],pixscale=0.015):
     '''
-    Creates miltiple source. Valid keywords are 'br' (source relative brightness, list of
+    Creates multiple source. Valid keywords are 'br' (source relative brightness, list of
     floats),'Dec_offset' and 'RA_offset' (offset in arcsec, list of floats), 'imsize'
     (image size in arcsec, Dec_size, RA_size), 'pixscale'  (pixel scale in arcsec/pix).
     '''
     imnpix_y = round(imsize[0]/pixscale)
     imnpix_x = round(imsize[1]/pixscale)
     sources = {}
-    print(br)
+    #print(br)
     for source in range(len(br)):
         sources.update({'Source{}'.format(source):{'Brightness':br[source],\
         'Dec':round(imnpix_y/2)+round(Dec_offset[source]/pixscale),\
         'RA':round(imnpix_x/2)+round(RA_offset[source]/pixscale)}})
     print(sources)
     return sources
+
+def cluster(br, Dec_offset, RA_offset,imsize=[3.,3.],pixscale=0.015):
+    '''
+    Creates cluster. Valid keywords are 'br' (source relative brightness, np.array),
+    'Dec_offset' and 'RA_offset' (offset in arcsec, np.array), 'imsize'
+    (image size in arcsec, Dec_size, RA_size), 'pixscale'  (pixel scale in arcsec/pix).
+    '''
+    imnpix_y = round(imsize[0]/pixscale)
+    imnpix_x = round(imsize[1]/pixscale)
+    sources = {}
+    #print(br)
+    for source in range(len(br)):
+        sources.update({'Source{}'.format(source):{'Brightness':br[source],\
+        'Dec':int(round(imnpix_y/2)+round(Dec_offset[source]/pixscale)),\
+        'RA':int(round(imnpix_x/2)+round(RA_offset[source]/pixscale))}})
+    return(sources)
