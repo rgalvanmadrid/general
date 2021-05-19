@@ -1,4 +1,0 @@
-no_backup1/
-pendejadas/
-Documents/no_backup2/
-.local/share/Trash/*
