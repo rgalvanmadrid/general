@@ -26,7 +26,7 @@ else
 	echo ""You are using computing node "$(hostname)"
 	echo "You will sync "$content_path" in Draco to "$backup_path" within IRyA network."
 	read -p "Press enter to continue:"
-	rsync -atvP --exclude-from $exclude $content_path $username"@"$connection":"$backup_path
+	rsync -rtvP --exclude-from $exclude $content_path $username"@"$connection":"$backup_path
 	echo "Backup finished."	
 fi
 
