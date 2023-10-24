@@ -1,0 +1,3 @@
+name,imageUrl,area,profileUrl,office,tags,isLoggedUser,positionName,id,parentId,size
+Luis Zapata,,,,"Ceo,tag1,manager,cto",false,Gerente del proyecto,,,
+Carlos Carrasco,,,,"Ceo,tag1,tag2",Gerentea adjunto,,,
