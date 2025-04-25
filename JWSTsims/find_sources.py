@@ -3,10 +3,10 @@
 # Photutils without much thinking.
 
 import numpy as np
-from photutils import DAOStarFinder
+from photutils.detection import DAOStarFinder
 from astropy.stats import mad_std
 from astropy.io import fits
-from photutils import aperture_photometry, CircularAperture
+from photutils.aperture import aperture_photometry, CircularAperture
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm, PowerNorm
 
