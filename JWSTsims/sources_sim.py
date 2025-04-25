@@ -8,7 +8,8 @@ from astropy.convolution import convolve, convolve_fft
 from astropy.convolution import CustomKernel
 from reproject import reproject_interp
 from astropy import wcs
-import webbpsf
+#import webbpsf
+import stpsf 
 import matplotlib.pyplot as plt
 import create_sources
 import random
@@ -88,6 +89,6 @@ im_head['NAXIS2'] = convl_image.shape[1]
 fits.writeto('convl_model.fits',convl_image,im_head,overwrite=True)
 
 #Display on screen and save png
-webbpsf.display_psf('convl_model.fits')
+stpsf.display_psf('convl_model.fits')
 plt.savefig('convl_model.png')
 plt.show()
