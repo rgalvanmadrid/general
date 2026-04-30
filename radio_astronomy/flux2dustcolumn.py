@@ -41,3 +41,27 @@ def dust_column(flux, area, nu, Tdust=20, kappa=1.0, nu_kappa=230e9, beta=1.8):
     sigma_RJ = tau_RJ/kappa_nu
     result_dict = {'planck':sigma_planck, 'rj':sigma_RJ}
     return result_dict   
+
+def thin_dust_mass(flux, dist, nu, kappa=1.0, Tdust=20.0):
+    '''
+    [flux] = mJy
+    [dist] = pc 
+    [nu] = Hz
+    [kappa] = cm^2 g^-1
+    [Tdust] = K
+    '''
+    # Useful constants: 
+    h = 6.6260755e-27 #cgs 
+    c = 2.99792458e10
+    k = 1.380658e-16
+    pc2cm = 3.086e18
+    msun2g = 1.989e33
+    planck = (2*h*nu**3/c**2)*(np.exp((h*nu)/(k*Tdust))-1)**-1
+    flux_cgs = flux*(1e-3*1e-23)
+    dist_cm = dist*pc2cm
+    # calculate mass in grams 
+    mass_g = (flux_cgs*dist_cm**2)/(kappa*planck)
+    mass_msun = mass_g/msun2g
+    result_dict = {'mass_grams': mass_g, 'mass_msun': mass_msun}
+    print(result_dict)
+    return result_dict
